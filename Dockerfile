@@ -5,7 +5,7 @@ RUN apt install default jdk -y
 RUN apt install maven -y
 RUN apt install tomcat8 -y
 RUN git clone git@github.com:Terion21/01_Docker_project.git
-EXPOSE 79
+EXPOSE 80
 WORKDIR /home/elshl/war-web-project/
 RUN mvn package
 WORKDIR /home/elshl/war-web-project/target/
