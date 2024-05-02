@@ -14,7 +14,7 @@ RUN git clone https://github.com/koddas/war-web-project.git
 #Переместиться в директорию проекта, где существует pom.xml
 WORKDIR /home/elshl/war-web-project
 #RUN chmod +x /home/elshl/war-web-project/pom.xml
-ADD pom.xml /home/elshl
+COPY pom.xml /home/elshl
 #Запустить maven для создания артефакта *.WAR
 WORKDIR /home/elshl
 RUN mvn package
