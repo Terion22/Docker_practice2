@@ -3,10 +3,10 @@ FROM ubuntu:20.04
 RUN apt update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 #Обновить и установить необходимый софт
 RUN apt update
-    apt install git -y
-    apt install default-jdk -y
-    apt install maven -y
-    apt install tomcat9 -y
+RUN apt install git -y
+RUN apt install default-jdk -y
+RUN apt install maven -y
+RUN apt install tomcat9 -y
 #-----------------------------------------------------------------------------
 #FROM maven:latest
 #Cкачать проект с git
