@@ -5,7 +5,7 @@ RUN apt install git -y
 RUN apt install default-jdk -y
 RUN apt install maven -y
 RUN apt install tomcat9 -y
-RUN git clone git@github.com:Terion21/01_Docker_project.git
+RUN git clone https://github.com/koddas/war-web-project.git
 EXPOSE 80
 WORKDIR /home/elshl/war-web-project/
 RUN mvn package
