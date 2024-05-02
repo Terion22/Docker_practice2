@@ -13,7 +13,7 @@ RUN apt install tomcat9 -y
 RUN git clone https://github.com/koddas/war-web-project.git
 #Переместиться в директорию проекта, где существует pom.xml
 WORKDIR /home/elshl/war-web-project
-RUN chmod w+x pom.xml
+RUN chmod +x pom.xml
 ADD pom.xml /home/elshl
 #Запустить maven для создания артефакта *.WAR
 WORKDIR /home/elshl
