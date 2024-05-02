@@ -7,18 +7,18 @@ RUN apt install git -y
 RUN apt install default-jdk -y
 RUN apt install maven -y
 RUN apt install tomcat9 -y
+#-----------------------------------------------------------------------------
+FROM maven:latest
 #Cкачать проект с git
 RUN git clone https://github.com/koddas/war-web-project.git
 #Переместиться в директорию проекта, где существует pom.xml
 WORKDIR /home/elshl/war-web-project
-#тест - maven не видит pom.xml - пробую решить правами
-RUN chmod +rwx /home/elshl/war-web-project/*
-#COPY pom.xml /home/elshl/war-web-project/
+COPY pom.xml /home/elshl/war-web-project/
 #Запустить maven ждя создания артефакта *.WAR
 RUN mvn package
 #Переместиться в директорию с артефактом
 WORKDIR /home/elshl/war-web-project/target/
-#Добавить артифакт в директорию tomcat
+#Добавить артефакт в директорию tomcat
 ADD wwp-2.0.0.war /var/lib/tomcat9/webapps/
 EXPOSE 80
 #запустить tomcat
