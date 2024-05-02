@@ -13,8 +13,10 @@ FROM maven:latest
 RUN git clone https://github.com/koddas/war-web-project.git
 #Переместиться в директорию проекта, где существует pom.xml
 WORKDIR /home/elshl/war-web-project/
-#ADD pom.xml /home/elshl
+RUN mv pom.xml /home/elshl
+RUN chmod w+x pom.xml
 #Запустить maven для создания артефакта *.WAR
+
 RUN mvn package
 #Переместиться в директорию с артефактом
 WORKDIR /home/elshl/war-web-project/target/
