@@ -17,7 +17,6 @@ WORKDIR /home/elshl/superproject/war-web-project/
 #Запустить maven для создания артефакта *.WAR
 RUN mvn package
 #--Передать эстафетную палочку томкату
-FROM tomcat:9.0.84-jdk11
+FROM tomcat:9-jre8-temurin-focal
 COPY --from=build /home/elshl/superproject/war-web-project/target/*.war /usr/local/tomcat/webapps/
-EXPOSE 8080
 #CMD ["catalina.sh", "run"]
