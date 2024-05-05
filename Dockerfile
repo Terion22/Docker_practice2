@@ -18,6 +18,6 @@ WORKDIR /home/elshl/superproject/war-web-project/
 RUN mvn package
 #--Передать эстафетную палочку томкату
 FROM tomcat:9.0.84-jdk11
-COPY -- from build /home/elshl/superproject/war-web-project/target/*.war /usr/local/tomcat/webapps/
+COPY --from=build /home/elshl/superproject/war-web-project/target/*.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 #CMD ["catalina.sh", "run"]
