@@ -18,7 +18,7 @@ WORKDIR /home/elshl/superproject/war-web-project/
 RUN mvn package
 #Перейти в директорию с созданным артифактом *WAR и переместить его в рабочую директорию tomcat
 WORKDIR /home/elshl/superproject/war-web-project/target/
-COPY *.war /var/lib/tomcat9/webapps/
+RUN cp *.war /var/lib/tomcat9/webapps/
 EXPOSE 80
 #запустить tomcat
 CMD ["catalina.sh", "run"]
