@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as build
 
 #Решение проблемы с выбором временной зоны
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y tzdata
