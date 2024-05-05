@@ -6,7 +6,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 #Обновить и установить необходимый софт
 RUN apt install git -y && apt install default-jdk -y
 RUN apt install maven -y
-RUN apt install tomcat9 -y
+#RUN apt install tomcat9 -y
 #-----------------------------------------------------------------------------
 #Cкачать проект с git в новую директорию
 WORKDIR /home/elshl/superproject
@@ -16,9 +16,8 @@ RUN chmod -R 777 ./
 WORKDIR /home/elshl/superproject/war-web-project/
 #Запустить maven для создания артефакта *.WAR
 RUN mvn package
-#Перейти в директорию с созданным артифактом *WAR и переместить его в рабочую директорию tomcat
-WORKDIR /home/elshl/superproject/war-web-project/target/
-RUN cp *.war /var/lib/tomcat9/webapps/
-EXPOSE 80
-#запустить tomcat
-CMD ["catalina.sh", "run"]
+#--Передать эстафетную палочку томкату
+FROM tomcat:9.0.84-jdk11
+COPY -- from build /home/elshl/superproject/war-web-project/target/*.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+#CMD ["catalina.sh", "run"]
