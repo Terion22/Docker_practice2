@@ -16,6 +16,6 @@ RUN chmod -R 777 ./
 WORKDIR /home/elshl/superproject/war-web-project/
 RUN mvn package
 
-#transfer the step to tomcat
+#Transfer the step to tomcat
 FROM tomcat:9-jre8-temurin-focal
 COPY --from=build /home/elshl/superproject/war-web-project/target/*.war /usr/local/tomcat/webapps/
