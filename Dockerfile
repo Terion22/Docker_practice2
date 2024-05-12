@@ -3,7 +3,7 @@ FROM ubuntu:20.04 as build
 #Solution of the problem of strict choosing timmezone
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 
-#Install soft
+#Install soft and update applications
 RUN apt install git -y && apt install default-jdk -y
 RUN apt install maven -y
 
